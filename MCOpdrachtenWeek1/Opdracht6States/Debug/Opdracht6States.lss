@@ -1,0 +1,379 @@
+
+Opdracht6States.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000001ce  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000017a  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000001ce  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000200  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000028  00000000  00000000  0000023c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000906  00000000  00000000  00000264  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000829  00000000  00000000  00000b6a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000618  00000000  00000000  00001393  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  000019ac  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000121fe  00000000  00000000  000019e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000001b8  00000000  00000000  00013bde  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000018  00000000  00000000  00013d96  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_macro  000002d0  00000000  00000000  00013dae  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	45 c0       	rjmp	.+138    	; 0x8c <__ctors_end>
+   2:	00 00       	nop
+   4:	4b c0       	rjmp	.+150    	; 0x9c <__bad_interrupt>
+   6:	00 00       	nop
+   8:	49 c0       	rjmp	.+146    	; 0x9c <__bad_interrupt>
+   a:	00 00       	nop
+   c:	47 c0       	rjmp	.+142    	; 0x9c <__bad_interrupt>
+   e:	00 00       	nop
+  10:	45 c0       	rjmp	.+138    	; 0x9c <__bad_interrupt>
+  12:	00 00       	nop
+  14:	43 c0       	rjmp	.+134    	; 0x9c <__bad_interrupt>
+  16:	00 00       	nop
+  18:	41 c0       	rjmp	.+130    	; 0x9c <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	3f c0       	rjmp	.+126    	; 0x9c <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	3d c0       	rjmp	.+122    	; 0x9c <__bad_interrupt>
+  22:	00 00       	nop
+  24:	3b c0       	rjmp	.+118    	; 0x9c <__bad_interrupt>
+  26:	00 00       	nop
+  28:	39 c0       	rjmp	.+114    	; 0x9c <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	37 c0       	rjmp	.+110    	; 0x9c <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	35 c0       	rjmp	.+106    	; 0x9c <__bad_interrupt>
+  32:	00 00       	nop
+  34:	33 c0       	rjmp	.+102    	; 0x9c <__bad_interrupt>
+  36:	00 00       	nop
+  38:	31 c0       	rjmp	.+98     	; 0x9c <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	2f c0       	rjmp	.+94     	; 0x9c <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	2d c0       	rjmp	.+90     	; 0x9c <__bad_interrupt>
+  42:	00 00       	nop
+  44:	2b c0       	rjmp	.+86     	; 0x9c <__bad_interrupt>
+  46:	00 00       	nop
+  48:	29 c0       	rjmp	.+82     	; 0x9c <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	27 c0       	rjmp	.+78     	; 0x9c <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	25 c0       	rjmp	.+74     	; 0x9c <__bad_interrupt>
+  52:	00 00       	nop
+  54:	23 c0       	rjmp	.+70     	; 0x9c <__bad_interrupt>
+  56:	00 00       	nop
+  58:	21 c0       	rjmp	.+66     	; 0x9c <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	1f c0       	rjmp	.+62     	; 0x9c <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	1d c0       	rjmp	.+58     	; 0x9c <__bad_interrupt>
+  62:	00 00       	nop
+  64:	1b c0       	rjmp	.+54     	; 0x9c <__bad_interrupt>
+  66:	00 00       	nop
+  68:	19 c0       	rjmp	.+50     	; 0x9c <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	17 c0       	rjmp	.+46     	; 0x9c <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	15 c0       	rjmp	.+42     	; 0x9c <__bad_interrupt>
+  72:	00 00       	nop
+  74:	13 c0       	rjmp	.+38     	; 0x9c <__bad_interrupt>
+  76:	00 00       	nop
+  78:	11 c0       	rjmp	.+34     	; 0x9c <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	0f c0       	rjmp	.+30     	; 0x9c <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	0d c0       	rjmp	.+26     	; 0x9c <__bad_interrupt>
+  82:	00 00       	nop
+  84:	0b c0       	rjmp	.+22     	; 0x9c <__bad_interrupt>
+  86:	00 00       	nop
+  88:	09 c0       	rjmp	.+18     	; 0x9c <__bad_interrupt>
+	...
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e1       	ldi	r29, 0x10	; 16
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+  98:	13 d0       	rcall	.+38     	; 0xc0 <main>
+  9a:	6d c0       	rjmp	.+218    	; 0x176 <_exit>
+
+0000009c <__bad_interrupt>:
+  9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
+
+0000009e <wait>:
+#include <asf.h>
+#include <util/delay.h>
+
+/*Busy wait number of millisecs*/
+void wait( int ms ) {
+	for (int i=0; i<ms; i++) {
+  9e:	18 16       	cp	r1, r24
+  a0:	19 06       	cpc	r1, r25
+  a2:	6c f4       	brge	.+26     	; 0xbe <wait+0x20>
+  a4:	20 e0       	ldi	r18, 0x00	; 0
+  a6:	30 e0       	ldi	r19, 0x00	; 0
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a8:	ef ec       	ldi	r30, 0xCF	; 207
+  aa:	f7 e0       	ldi	r31, 0x07	; 7
+  ac:	31 97       	sbiw	r30, 0x01	; 1
+  ae:	f1 f7       	brne	.-4      	; 0xac <wait+0xe>
+  b0:	00 c0       	rjmp	.+0      	; 0xb2 <wait+0x14>
+  b2:	00 00       	nop
+  b4:	2f 5f       	subi	r18, 0xFF	; 255
+  b6:	3f 4f       	sbci	r19, 0xFF	; 255
+  b8:	82 17       	cp	r24, r18
+  ba:	93 07       	cpc	r25, r19
+  bc:	a9 f7       	brne	.-22     	; 0xa8 <wait+0xa>
+  be:	08 95       	ret
+
+000000c0 <main>:
+	/* Insert application code here, after the board has been initialized. */
+	
+	typedef enum state{fast=250, slow=1000};
+	int currentSpeed = slow;
+	
+	DDRD = 0xFF;
+  c0:	8f ef       	ldi	r24, 0xFF	; 255
+  c2:	81 bb       	out	0x11, r24	; 17
+	PORTD = 0xFF;
+  c4:	82 bb       	out	0x12, r24	; 18
+		
+	int counter = 0;//incrementing value
+	int countUp = 1;//bool to check if we're counting up or down
+  c6:	c1 e0       	ldi	r28, 0x01	; 1
+  c8:	d0 e0       	ldi	r29, 0x00	; 0
+	int currentSpeed = slow;
+	
+	DDRD = 0xFF;
+	PORTD = 0xFF;
+		
+	int counter = 0;//incrementing value
+  ca:	e1 2c       	mov	r14, r1
+  cc:	f1 2c       	mov	r15, r1
+
+
+	/* Insert application code here, after the board has been initialized. */
+	
+	typedef enum state{fast=250, slow=1000};
+	int currentSpeed = slow;
+  ce:	08 ee       	ldi	r16, 0xE8	; 232
+  d0:	13 e0       	ldi	r17, 0x03	; 3
+			}
+		if(countUp == 0)
+		{
+			if(counter <= 0)
+			{
+				countUp = 1;
+  d2:	cc 24       	eor	r12, r12
+  d4:	c3 94       	inc	r12
+  d6:	d1 2c       	mov	r13, r1
+				PORTD = 0X00;
+			} else {
+				counter--;
+  d8:	a1 2c       	mov	r10, r1
+  da:	b1 2c       	mov	r11, r1
+		
+		if(countUp == 1) {
+			if(counter >= currentSpeed)
+			{
+				 countUp = 0;
+				 PORTD = 0x80;
+  dc:	68 94       	set
+  de:	77 24       	eor	r7, r7
+  e0:	77 f8       	bld	r7, 7
+		{
+			currentSpeed = slow;
+			counter = 0;
+		} else if(PINC & 0X01 && currentSpeed == slow) 
+		{
+			currentSpeed = fast;
+  e2:	0f 2e       	mov	r0, r31
+  e4:	fa ef       	ldi	r31, 0xFA	; 250
+  e6:	5f 2e       	mov	r5, r31
+  e8:	f0 2d       	mov	r31, r0
+  ea:	61 2c       	mov	r6, r1
+	{
+		
+		
+		if(PINC & 0x01 && currentSpeed == fast) 
+		{
+			currentSpeed = slow;
+  ec:	0f 2e       	mov	r0, r31
+  ee:	f8 ee       	ldi	r31, 0xE8	; 232
+  f0:	8f 2e       	mov	r8, r31
+  f2:	f0 2d       	mov	r31, r0
+  f4:	0f 2e       	mov	r0, r31
+  f6:	f3 e0       	ldi	r31, 0x03	; 3
+  f8:	9f 2e       	mov	r9, r31
+  fa:	f0 2d       	mov	r31, r0
+	
+	while(1) 
+	{
+		
+		
+		if(PINC & 0x01 && currentSpeed == fast) 
+  fc:	98 9b       	sbis	0x13, 0	; 19
+  fe:	03 c0       	rjmp	.+6      	; 0x106 <main+0x46>
+ 100:	0a 3f       	cpi	r16, 0xFA	; 250
+ 102:	11 05       	cpc	r17, r1
+ 104:	59 f1       	breq	.+86     	; 0x15c <main+0x9c>
+		{
+			currentSpeed = slow;
+			counter = 0;
+		} else if(PINC & 0X01 && currentSpeed == slow) 
+ 106:	98 9b       	sbis	0x13, 0	; 19
+ 108:	04 c0       	rjmp	.+8      	; 0x112 <main+0x52>
+ 10a:	08 3e       	cpi	r16, 0xE8	; 232
+ 10c:	83 e0       	ldi	r24, 0x03	; 3
+ 10e:	18 07       	cpc	r17, r24
+ 110:	41 f1       	breq	.+80     	; 0x162 <main+0xa2>
+			currentSpeed = fast;
+			counter = 0;
+		}
+		
+		
+		if(countUp == 1) {
+ 112:	c1 30       	cpi	r28, 0x01	; 1
+ 114:	d1 05       	cpc	r29, r1
+ 116:	69 f4       	brne	.+26     	; 0x132 <main+0x72>
+			if(counter >= currentSpeed)
+ 118:	e0 16       	cp	r14, r16
+ 11a:	f1 06       	cpc	r15, r17
+ 11c:	24 f0       	brlt	.+8      	; 0x126 <main+0x66>
+			{
+				 countUp = 0;
+				 PORTD = 0x80;
+ 11e:	72 ba       	out	0x12, r7	; 18
+ 120:	0a c0       	rjmp	.+20     	; 0x136 <main+0x76>
+			currentSpeed = fast;
+			counter = 0;
+		}
+		
+		
+		if(countUp == 1) {
+ 122:	e1 2c       	mov	r14, r1
+ 124:	f1 2c       	mov	r15, r1
+			if(counter >= currentSpeed)
+			{
+				 countUp = 0;
+				 PORTD = 0x80;
+				 } else {
+			counter++;
+ 126:	8f ef       	ldi	r24, 0xFF	; 255
+ 128:	e8 1a       	sub	r14, r24
+ 12a:	f8 0a       	sbc	r15, r24
+ 12c:	cc 2d       	mov	r28, r12
+ 12e:	dd 2d       	mov	r29, r13
+ 130:	11 c0       	rjmp	.+34     	; 0x154 <main+0x94>
+				}
+			}
+		if(countUp == 0)
+ 132:	20 97       	sbiw	r28, 0x00	; 0
+ 134:	79 f4       	brne	.+30     	; 0x154 <main+0x94>
+		{
+			if(counter <= 0)
+ 136:	1e 14       	cp	r1, r14
+ 138:	1f 04       	cpc	r1, r15
+ 13a:	3c f0       	brlt	.+14     	; 0x14a <main+0x8a>
+ 13c:	02 c0       	rjmp	.+4      	; 0x142 <main+0x82>
+				 PORTD = 0x80;
+				 } else {
+			counter++;
+				}
+			}
+		if(countUp == 0)
+ 13e:	e1 2c       	mov	r14, r1
+ 140:	f1 2c       	mov	r15, r1
+		{
+			if(counter <= 0)
+			{
+				countUp = 1;
+				PORTD = 0X00;
+ 142:	12 ba       	out	0x12, r1	; 18
+			}
+		if(countUp == 0)
+		{
+			if(counter <= 0)
+			{
+				countUp = 1;
+ 144:	cc 2d       	mov	r28, r12
+ 146:	dd 2d       	mov	r29, r13
+ 148:	05 c0       	rjmp	.+10     	; 0x154 <main+0x94>
+				PORTD = 0X00;
+			} else {
+				counter--;
+ 14a:	81 e0       	ldi	r24, 0x01	; 1
+ 14c:	e8 1a       	sub	r14, r24
+ 14e:	f1 08       	sbc	r15, r1
+ 150:	ca 2d       	mov	r28, r10
+ 152:	db 2d       	mov	r29, r11
+			}
+		}		
+		wait(1);
+ 154:	8c 2d       	mov	r24, r12
+ 156:	9d 2d       	mov	r25, r13
+ 158:	a2 df       	rcall	.-188    	; 0x9e <wait>
+	}
+ 15a:	d0 cf       	rjmp	.-96     	; 0xfc <main+0x3c>
+	{
+		
+		
+		if(PINC & 0x01 && currentSpeed == fast) 
+		{
+			currentSpeed = slow;
+ 15c:	08 2d       	mov	r16, r8
+ 15e:	19 2d       	mov	r17, r9
+ 160:	02 c0       	rjmp	.+4      	; 0x166 <main+0xa6>
+			counter = 0;
+		} else if(PINC & 0X01 && currentSpeed == slow) 
+		{
+			currentSpeed = fast;
+ 162:	05 2d       	mov	r16, r5
+ 164:	16 2d       	mov	r17, r6
+			counter = 0;
+		}
+		
+		
+		if(countUp == 1) {
+ 166:	c1 30       	cpi	r28, 0x01	; 1
+ 168:	d1 05       	cpc	r29, r1
+ 16a:	d9 f2       	breq	.-74     	; 0x122 <main+0x62>
+				 PORTD = 0x80;
+				 } else {
+			counter++;
+				}
+			}
+		if(countUp == 0)
+ 16c:	20 97       	sbiw	r28, 0x00	; 0
+ 16e:	39 f3       	breq	.-50     	; 0x13e <main+0x7e>
+ 170:	e1 2c       	mov	r14, r1
+ 172:	f1 2c       	mov	r15, r1
+ 174:	ef cf       	rjmp	.-34     	; 0x154 <main+0x94>
+
+00000176 <_exit>:
+ 176:	f8 94       	cli
+
+00000178 <__stop_program>:
+ 178:	ff cf       	rjmp	.-2      	; 0x178 <__stop_program>
