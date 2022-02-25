@@ -3,31 +3,31 @@ OpdrachtB5.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000012  00800100  0000019e  00000212  2**0
+  0 .data         00000012  00800100  0000019a  0000020e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000019e  00000000  00000000  00000074  2**1
+  1 .text         0000019a  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  00000224  2**0
+  2 .comment      00000030  00000000  00000000  00000220  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000254  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000250  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 000000a0  00000000  00000000  00000290  2**0
+  4 .debug_aranges 00000080  00000000  00000000  0000028c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000c84  00000000  00000000  00000330  2**0
+  5 .debug_info   00000bf1  00000000  00000000  0000030c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000096c  00000000  00000000  00000fb4  2**0
+  6 .debug_abbrev 00000913  00000000  00000000  00000efd  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000cb9  00000000  00000000  00001920  2**0
+  7 .debug_line   00000954  00000000  00000000  00001810  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000110  00000000  00000000  000025dc  2**2
+  8 .debug_frame  000000ec  00000000  00000000  00002164  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000122ca  00000000  00000000  000026ec  2**0
+  9 .debug_str    00012291  00000000  00000000  00002250  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000002c6  00000000  00000000  000149b6  2**0
+ 10 .debug_loc    000002c8  00000000  00000000  000144e1  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000070  00000000  00000000  00014c7c  2**0
+ 11 .debug_ranges 00000060  00000000  00000000  000147a9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_macro  00003dc4  00000000  00000000  00014cec  2**0
+ 12 .debug_macro  00002c0a  00000000  00000000  00014809  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -116,7 +116,7 @@ Disassembly of section .text:
   98:	11 e0       	ldi	r17, 0x01	; 1
   9a:	a0 e0       	ldi	r26, 0x00	; 0
   9c:	b1 e0       	ldi	r27, 0x01	; 1
-  9e:	ee e9       	ldi	r30, 0x9E	; 158
+  9e:	ea e9       	ldi	r30, 0x9A	; 154
   a0:	f1 e0       	ldi	r31, 0x01	; 1
   a2:	00 e0       	ldi	r16, 0x00	; 0
   a4:	0b bf       	out	0x3b, r16	; 59
@@ -126,8 +126,8 @@ Disassembly of section .text:
   ac:	a2 31       	cpi	r26, 0x12	; 18
   ae:	b1 07       	cpc	r27, r17
   b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
-  b2:	6b d0       	rcall	.+214    	; 0x18a <main>
-  b4:	72 c0       	rjmp	.+228    	; 0x19a <_exit>
+  b2:	6a d0       	rcall	.+212    	; 0x188 <main>
+  b4:	70 c0       	rjmp	.+224    	; 0x196 <_exit>
 
 000000b6 <__bad_interrupt>:
   b6:	a4 cf       	rjmp	.-184    	; 0x0 <__vectors>
@@ -140,15 +140,15 @@ void set_cursor(int position) {
 	unsigned char cursor = (position | (1<<7));
 	lcd_write_command(cursor);
   b8:	de 9a       	sbi	0x1b, 6	; 27
-  ba:	89 ef       	ldi	r24, 0xF9	; 249
-  bc:	90 e0       	ldi	r25, 0x00	; 0
+  ba:	8f ec       	ldi	r24, 0xCF	; 207
+  bc:	97 e0       	ldi	r25, 0x07	; 7
   be:	01 97       	sbiw	r24, 0x01	; 1
   c0:	f1 f7       	brne	.-4      	; 0xbe <lcd_strobe_lcd_e+0x6>
   c2:	00 c0       	rjmp	.+0      	; 0xc4 <lcd_strobe_lcd_e+0xc>
   c4:	00 00       	nop
   c6:	de 98       	cbi	0x1b, 6	; 27
-  c8:	89 ef       	ldi	r24, 0xF9	; 249
-  ca:	90 e0       	ldi	r25, 0x00	; 0
+  c8:	8f ec       	ldi	r24, 0xCF	; 207
+  ca:	97 e0       	ldi	r25, 0x07	; 7
   cc:	01 97       	sbiw	r24, 0x01	; 1
   ce:	f1 f7       	brne	.-4      	; 0xcc <lcd_strobe_lcd_e+0x14>
   d0:	00 c0       	rjmp	.+0      	; 0xd2 <lcd_strobe_lcd_e+0x1a>
@@ -271,8 +271,8 @@ void lcd_clear() {
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 13e:	83 ef       	ldi	r24, 0xF3	; 243
- 140:	91 e0       	ldi	r25, 0x01	; 1
+ 13e:	8f e9       	ldi	r24, 0x9F	; 159
+ 140:	9f e0       	ldi	r25, 0x0F	; 15
  142:	01 97       	sbiw	r24, 0x01	; 1
  144:	f1 f7       	brne	.-4      	; 0x142 <lcd_clear+0x8>
  146:	00 c0       	rjmp	.+0      	; 0x148 <lcd_clear+0xe>
@@ -298,8 +298,8 @@ void init() {
 	// Init LCD
 	init_4bits_mode();
  156:	cb df       	rcall	.-106    	; 0xee <init_4bits_mode>
- 158:	83 ec       	ldi	r24, 0xC3	; 195
- 15a:	99 e0       	ldi	r25, 0x09	; 9
+ 158:	8f e1       	ldi	r24, 0x1F	; 31
+ 15a:	9e e4       	ldi	r25, 0x4E	; 78
  15c:	01 97       	sbiw	r24, 0x01	; 1
  15e:	f1 f7       	brne	.-4      	; 0x15c <init+0xc>
  160:	00 c0       	rjmp	.+0      	; 0x162 <init+0x12>
@@ -358,40 +358,27 @@ void display_text(char *str) {
  184:	f1 cf       	rjmp	.-30     	; 0x168 <lcd_write_string>
  186:	08 95       	ret
 
-00000188 <board_init>:
-#include <compiler.h>
-#include <conf_board.h>
-
-
-void board_init(void)
-{
- 188:	08 95       	ret
-
-0000018a <main>:
-
-int main (void)
-{
+00000188 <main>:
 	/* Insert system clock initialization code here (sysclk_init()). */
 
-	board_init();
- 18a:	fe df       	rcall	.-4      	; 0x188 <board_init>
+	//board_init();
 
 	/* Insert application code here, after the board has been initialized. */
 	init();
- 18c:	e1 df       	rcall	.-62     	; 0x150 <init>
- 18e:	80 e0       	ldi	r24, 0x00	; 0
+ 188:	e3 df       	rcall	.-58     	; 0x150 <init>
 	
 	display_text("Test Hello World");
- 190:	91 e0       	ldi	r25, 0x01	; 1
- 192:	f8 df       	rcall	.-16     	; 0x184 <display_text>
- 194:	80 e0       	ldi	r24, 0x00	; 0
+ 18a:	80 e0       	ldi	r24, 0x00	; 0
+ 18c:	91 e0       	ldi	r25, 0x01	; 1
+ 18e:	fa df       	rcall	.-12     	; 0x184 <display_text>
 	
 }
- 196:	90 e0       	ldi	r25, 0x00	; 0
- 198:	08 95       	ret
+ 190:	80 e0       	ldi	r24, 0x00	; 0
+ 192:	90 e0       	ldi	r25, 0x00	; 0
+ 194:	08 95       	ret
 
-0000019a <_exit>:
- 19a:	f8 94       	cli
+00000196 <_exit>:
+ 196:	f8 94       	cli
 
-0000019c <__stop_program>:
- 19c:	ff cf       	rjmp	.-2      	; 0x19c <__stop_program>
+00000198 <__stop_program>:
+ 198:	ff cf       	rjmp	.-2      	; 0x198 <__stop_program>

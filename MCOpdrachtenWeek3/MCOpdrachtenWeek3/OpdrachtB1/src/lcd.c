@@ -18,6 +18,7 @@ void lcd_write_string(char *str);
 void lcd_write_data(unsigned char byte);
 void lcd_write_cmd(unsigned char byte);
 void lcd_clear(void);
+void lcd_write_command(unsigned char byte);
 
 void lcd_write_command(unsigned char byte) {
 	// First nibble.
@@ -31,7 +32,8 @@ void lcd_write_command(unsigned char byte) {
 	lcd_strobe_lcd_e();
 }
 
-void init() {
+void init(void) {
+	
 	// Init I/O
 	DDRC = 0xFF;			// PORTD(7) output, PORTD(6:0) input
 	PORTC = 0xFF;
@@ -56,7 +58,7 @@ void set_cursor(int position) {
 
 void init_4bits_mode(void) {
 	// PORTC output mode and all low (also E and RS pin)
-	DDRD = 0xFF;
+	//DDRD = 0xFF;
 	DDRA = 0xFF;
 	PORTC = 0x00;
 	PORTA = 0x00;
