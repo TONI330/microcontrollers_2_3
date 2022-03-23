@@ -10,7 +10,7 @@
 
 /*
 	This method initializes the servos and the I/O pins they are
-	connected to.
+	connected to. The servos are initialized to stop turning.
 	
 	The servos are connected to pin D13 & D12 which are set to output in
 	this method.
