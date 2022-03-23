@@ -3,29 +3,29 @@ Eindopdracht.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800200  00800200  000001be  2**0
+  0 .data         00000000  00800200  00800200  000001ea  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000016a  00000000  00000000  00000054  2**1
+  1 .text         00000196  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  000001be  2**0
+  2 .comment      00000030  00000000  00000000  000001ea  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001f0  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000021c  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000020  00000000  00000000  00000230  2**0
+  4 .debug_aranges 00000050  00000000  00000000  0000025c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000ce7  00000000  00000000  00000250  2**0
+  5 .debug_info   00000d0e  00000000  00000000  000002ac  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000be5  00000000  00000000  00000f37  2**0
+  6 .debug_abbrev 00000beb  00000000  00000000  00000fba  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000354  00000000  00000000  00001b1c  2**0
+  7 .debug_line   00000361  00000000  00000000  00001ba5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000024  00000000  00000000  00001e70  2**2
+  8 .debug_frame  0000008c  00000000  00000000  00001f08  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000059e  00000000  00000000  00001e94  2**0
+  9 .debug_str    000005a5  00000000  00000000  00001f94  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000006c  00000000  00000000  00002432  2**0
+ 10 .debug_loc    00000085  00000000  00000000  00002539  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  0000249e  2**0
+ 11 .debug_ranges 00000030  00000000  00000000  000025be  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -65,9 +65,9 @@ Disassembly of section .text:
   3e:	00 00       	nop
   40:	5b c0       	rjmp	.+182    	; 0xf8 <__bad_interrupt>
   42:	00 00       	nop
-  44:	59 c0       	rjmp	.+178    	; 0xf8 <__bad_interrupt>
+  44:	82 c0       	rjmp	.+260    	; 0x14a <__vector_17>
   46:	00 00       	nop
-  48:	57 c0       	rjmp	.+174    	; 0xf8 <__bad_interrupt>
+  48:	8f c0       	rjmp	.+286    	; 0x168 <__vector_18>
   4a:	00 00       	nop
   4c:	55 c0       	rjmp	.+170    	; 0xf8 <__bad_interrupt>
   4e:	00 00       	nop
@@ -155,89 +155,133 @@ Disassembly of section .text:
   ee:	cd bf       	out	0x3d, r28	; 61
   f0:	00 e0       	ldi	r16, 0x00	; 0
   f2:	0c bf       	out	0x3c, r16	; 60
-  f4:	02 d0       	rcall	.+4      	; 0xfa <main>
-  f6:	37 c0       	rjmp	.+110    	; 0x166 <_exit>
+  f4:	4b d0       	rcall	.+150    	; 0x18c <main>
+  f6:	4d c0       	rjmp	.+154    	; 0x192 <_exit>
 
 000000f8 <__bad_interrupt>:
   f8:	83 cf       	rjmp	.-250    	; 0x0 <__vectors>
 
-000000fa <main>:
-#include <util/delay.h>
+000000fa <init_servos>:
+#include <avr/interrupt.h>
+
+void init_servos()
+{
+	// Set up timer in PWM, Phase and frequency Correct mode.
+	TCCR1A = 0b01010110;
+  fa:	86 e5       	ldi	r24, 0x56	; 86
+  fc:	80 93 80 00 	sts	0x0080, r24	; 0x800080 <__TEXT_REGION_LENGTH__+0x7c0080>
+
+	// Set up timer with pre-scaler = 8 and PWM, Phase and frequency correct mode.
+	TCCR1B |= (1 << WGM13) | (1 << CS11);
+ 100:	e1 e8       	ldi	r30, 0x81	; 129
+ 102:	f0 e0       	ldi	r31, 0x00	; 0
+ 104:	80 81       	ld	r24, Z
+ 106:	82 61       	ori	r24, 0x12	; 18
+ 108:	80 83       	st	Z, r24
+
+	// Initialize counter.
+	TCNT1 = 0;
+ 10a:	10 92 85 00 	sts	0x0085, r1	; 0x800085 <__TEXT_REGION_LENGTH__+0x7c0085>
+ 10e:	10 92 84 00 	sts	0x0084, r1	; 0x800084 <__TEXT_REGION_LENGTH__+0x7c0084>
+	ICR1 = 20000;
+ 112:	80 e2       	ldi	r24, 0x20	; 32
+ 114:	9e e4       	ldi	r25, 0x4E	; 78
+ 116:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7c0087>
+ 11a:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7c0086>
+
+	// Initialize compare values.
+	OCR1A = 20000 - DRIVE_FULL_STOP_MS;
+ 11e:	84 e4       	ldi	r24, 0x44	; 68
+ 120:	98 e4       	ldi	r25, 0x48	; 72
+ 122:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7c0089>
+ 126:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7c0088>
+	OCR1B = 20000 - DRIVE_FULL_STOP_MS;
+ 12a:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <__TEXT_REGION_LENGTH__+0x7c008b>
+ 12e:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <__TEXT_REGION_LENGTH__+0x7c008a>
+
+	// Enable compare interrupts.
+	TIMSK1 |= (1 << OCIE1A);
+ 132:	ef e6       	ldi	r30, 0x6F	; 111
+ 134:	f0 e0       	ldi	r31, 0x00	; 0
+ 136:	80 81       	ld	r24, Z
+ 138:	82 60       	ori	r24, 0x02	; 2
+ 13a:	80 83       	st	Z, r24
+	TIMSK1 |= (1 << OCIE1B);
+ 13c:	80 81       	ld	r24, Z
+ 13e:	84 60       	ori	r24, 0x04	; 4
+ 140:	80 83       	st	Z, r24
+	
+	DDRB |= (1 << 7) | (1 << 6);
+ 142:	84 b1       	in	r24, 0x04	; 4
+ 144:	80 6c       	ori	r24, 0xC0	; 192
+ 146:	84 b9       	out	0x04, r24	; 4
+ 148:	08 95       	ret
+
+0000014a <__vector_17>:
+}
+
+// Interrupt for pin 13.
+ISR(TIMER1_COMPA_vect)
+{
+ 14a:	1f 92       	push	r1
+ 14c:	0f 92       	push	r0
+ 14e:	0f b6       	in	r0, 0x3f	; 63
+ 150:	0f 92       	push	r0
+ 152:	11 24       	eor	r1, r1
+ 154:	8f 93       	push	r24
+	PORTB ^= (1 << 7);
+ 156:	85 b1       	in	r24, 0x05	; 5
+ 158:	80 58       	subi	r24, 0x80	; 128
+ 15a:	85 b9       	out	0x05, r24	; 5
+}
+ 15c:	8f 91       	pop	r24
+ 15e:	0f 90       	pop	r0
+ 160:	0f be       	out	0x3f, r0	; 63
+ 162:	0f 90       	pop	r0
+ 164:	1f 90       	pop	r1
+ 166:	18 95       	reti
+
+00000168 <__vector_18>:
+
+// Interrupt for pin 12.
+ISR(TIMER1_COMPB_vect)
+{
+ 168:	1f 92       	push	r1
+ 16a:	0f 92       	push	r0
+ 16c:	0f b6       	in	r0, 0x3f	; 63
+ 16e:	0f 92       	push	r0
+ 170:	11 24       	eor	r1, r1
+ 172:	8f 93       	push	r24
+ 174:	9f 93       	push	r25
+	PORTB ^= (1 << 6);
+ 176:	95 b1       	in	r25, 0x05	; 5
+ 178:	80 e4       	ldi	r24, 0x40	; 64
+ 17a:	89 27       	eor	r24, r25
+ 17c:	85 b9       	out	0x05, r24	; 5
+}
+ 17e:	9f 91       	pop	r25
+ 180:	8f 91       	pop	r24
+ 182:	0f 90       	pop	r0
+ 184:	0f be       	out	0x3f, r0	; 63
+ 186:	0f 90       	pop	r0
+ 188:	1f 90       	pop	r1
+ 18a:	18 95       	reti
+
+0000018c <main>:
+
+#include "drive/drive.h"
 
 int main(void)
 {
-    /* Replace with your application code */
-	DDRE = 0xFF;
-  fa:	8f ef       	ldi	r24, 0xFF	; 255
-  fc:	8d b9       	out	0x0d, r24	; 13
-	TCNT3 = 0;
-  fe:	10 92 95 00 	sts	0x0095, r1	; 0x800095 <__TEXT_REGION_LENGTH__+0x7c0095>
- 102:	10 92 94 00 	sts	0x0094, r1	; 0x800094 <__TEXT_REGION_LENGTH__+0x7c0094>
-	TCCR3A = 0b00101001;
- 106:	89 e2       	ldi	r24, 0x29	; 41
- 108:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <__TEXT_REGION_LENGTH__+0x7c0090>
-	TCCR3B = 0b01010100;
- 10c:	84 e5       	ldi	r24, 0x54	; 84
- 10e:	80 93 91 00 	sts	0x0091, r24	; 0x800091 <__TEXT_REGION_LENGTH__+0x7c0091>
-	OCR3A = 1250;
- 112:	82 ee       	ldi	r24, 0xE2	; 226
- 114:	94 e0       	ldi	r25, 0x04	; 4
- 116:	90 93 99 00 	sts	0x0099, r25	; 0x800099 <__TEXT_REGION_LENGTH__+0x7c0099>
- 11a:	80 93 98 00 	sts	0x0098, r24	; 0x800098 <__TEXT_REGION_LENGTH__+0x7c0098>
-	OCR3B = 800;
- 11e:	80 e2       	ldi	r24, 0x20	; 32
- 120:	93 e0       	ldi	r25, 0x03	; 3
- 122:	90 93 9b 00 	sts	0x009B, r25	; 0x80009b <__TEXT_REGION_LENGTH__+0x7c009b>
- 126:	80 93 9a 00 	sts	0x009A, r24	; 0x80009a <__TEXT_REGION_LENGTH__+0x7c009a>
-	OCR3C = 800;
- 12a:	90 93 9d 00 	sts	0x009D, r25	; 0x80009d <__TEXT_REGION_LENGTH__+0x7c009d>
- 12e:	80 93 9c 00 	sts	0x009C, r24	; 0x80009c <__TEXT_REGION_LENGTH__+0x7c009c>
+	sei(); // Enable interrupts.
+ 18c:	78 94       	sei
 	
-    while (1) 
-    {
-		for (int i = 0; i < 1250; i++)
- 132:	80 e0       	ldi	r24, 0x00	; 0
- 134:	90 e0       	ldi	r25, 0x00	; 0
- 136:	12 c0       	rjmp	.+36     	; 0x15c <main+0x62>
-	#else
-		//round up by default
-		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
-	#endif
+	init_servos();
+ 18e:	b5 df       	rcall	.-150    	; 0xfa <init_servos>
+ 190:	ff cf       	rjmp	.-2      	; 0x190 <main+0x4>
 
-	__builtin_avr_delay_cycles(__ticks_dc);
- 138:	2f ef       	ldi	r18, 0xFF	; 255
- 13a:	31 ee       	ldi	r19, 0xE1	; 225
- 13c:	44 e0       	ldi	r20, 0x04	; 4
- 13e:	21 50       	subi	r18, 0x01	; 1
- 140:	30 40       	sbci	r19, 0x00	; 0
- 142:	40 40       	sbci	r20, 0x00	; 0
- 144:	e1 f7       	brne	.-8      	; 0x13e <main+0x44>
- 146:	00 c0       	rjmp	.+0      	; 0x148 <main+0x4e>
- 148:	00 00       	nop
-		{
-						_delay_ms(100);
+00000192 <_exit>:
+ 192:	f8 94       	cli
 
-			OCR3B = i;
- 14a:	90 93 9b 00 	sts	0x009B, r25	; 0x80009b <__TEXT_REGION_LENGTH__+0x7c009b>
- 14e:	80 93 9a 00 	sts	0x009A, r24	; 0x80009a <__TEXT_REGION_LENGTH__+0x7c009a>
-			OCR1A = i;
- 152:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7c0089>
- 156:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7c0088>
-	OCR3B = 800;
-	OCR3C = 800;
-	
-    while (1) 
-    {
-		for (int i = 0; i < 1250; i++)
- 15a:	01 96       	adiw	r24, 0x01	; 1
- 15c:	82 3e       	cpi	r24, 0xE2	; 226
- 15e:	24 e0       	ldi	r18, 0x04	; 4
- 160:	92 07       	cpc	r25, r18
- 162:	54 f3       	brlt	.-44     	; 0x138 <main+0x3e>
- 164:	e6 cf       	rjmp	.-52     	; 0x132 <main+0x38>
-
-00000166 <_exit>:
- 166:	f8 94       	cli
-
-00000168 <__stop_program>:
- 168:	ff cf       	rjmp	.-2      	; 0x168 <__stop_program>
+00000194 <__stop_program>:
+ 194:	ff cf       	rjmp	.-2      	; 0x194 <__stop_program>

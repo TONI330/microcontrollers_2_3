@@ -1,28 +1,18 @@
-/*
- * Eindopdracht.c
- *
- * Created: 23/03/2022 12:23:13
- * Author : tjtle
- */
-
 #define F_CPU 16e6
 
-#include <asf.h>
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
+
+#include "drive/drive.h"
 
 int main(void)
 {
-    /* Replace with your application code */
+	sei(); // Enable interrupts.
 	
-	TCCR2 = 0b00000111; //initialize counter on portd.7
+	init_servos();
 
-	
     while (1) 
     {
-		OCR1A++;
-		if(OCR1A > 1550) OCR1A = 1350;
-		_delay_ms(100); 
     }
 }
-
