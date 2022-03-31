@@ -13,22 +13,22 @@ void wait(int ms)
 
 void adcInit(void)
 {
-	ADMUX = 0b01100001;
-	ADCSRA = 0b11100110;
+	ADMUX = 0b11100001;			// AREF=2,56 V, result left adjusted, channel3 at pin PF1
+	ADCSRA = 0b10000110;		// ADC-enable, no interrupt, no free running, division by 64
 }
 
 int main(void)
 {
 	DDRF = 0x00;
 	DDRA = 0xFF;
-	DDRB = 0xFF;
 
 	adcInit();
 
 	while (1)
 	{
-		PORTB = ADCL;
+		ADCSRA |= (1 << ADSC); //Start ADC conversion
+		while ( ADCSRA & (1 << ADSC)) ;		// Wait for completion
 		PORTA = ADCH;
-		wait(100);
+		wait(10);
 	}
 }
