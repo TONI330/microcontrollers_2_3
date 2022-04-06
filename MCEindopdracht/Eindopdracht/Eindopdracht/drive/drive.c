@@ -36,17 +36,17 @@ void set_speed_motor(short percentage, short motor)
 {	
 	if(motor == LEFT_MOTOR)
 	{
-		if(percentage == 50)
+		if(percentage == 50) // Stop motor at stick centered.
 		{
 			OCR1B = calculate_timer_compare_time(DRIVE_FULL_STOP_MS);
 			return;
 		}
 		
-		if(percentage > 50)
+		if(percentage > 50) // Move forwards.
 		{
 			OCR1B = calculate_timer_compare_time(DRIVE_COUNTERCLOCKWISE_SLOWEST_MS + DRIVE_STEP_SIZE * ((percentage - 50) / 50.0 * 100));
 		} 
-		else
+		else // Move backwards.
 		{
 			OCR1B = calculate_timer_compare_time(DRIVE_CLOCKWISE_SLOWEST_MS - DRIVE_STEP_SIZE * ((50 - percentage) / 50.0 * 100));
 		}
@@ -54,7 +54,7 @@ void set_speed_motor(short percentage, short motor)
 		return;
 	}
 	
-	if(motor == RIGHT_MOTOR)
+	if(motor == RIGHT_MOTOR) // Stop motor at stick centered.
 	{
 		if(percentage == 50)
 		{
@@ -62,17 +62,18 @@ void set_speed_motor(short percentage, short motor)
 			return;
 		}
 		
-		if(percentage > 50)
+		if(percentage > 50) // Move forwards.
 		{
 			OCR1A = calculate_timer_compare_time(DRIVE_CLOCKWISE_SLOWEST_MS - DRIVE_STEP_SIZE * ((percentage - 50) / 50.0 * 100));
 		}
-		else
+		else // Move backwards.
 		{
 			OCR1A = calculate_timer_compare_time(DRIVE_COUNTERCLOCKWISE_SLOWEST_MS + DRIVE_STEP_SIZE * ((50 - percentage) / 50.0 * 100));
 		}
 	}
 }
 
+// Set speed for both motors.
 void set_speed(short percentage)
 {
 	set_speed_motor(percentage, LEFT_MOTOR);

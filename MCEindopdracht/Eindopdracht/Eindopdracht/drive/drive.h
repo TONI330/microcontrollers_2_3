@@ -19,4 +19,13 @@
 */
 void init_servos(void);
 
+/*
+	This method is used to set the speed of the servos.
+	
+	@param percentage_speed is the speed both servos will turn synchronously. 
+	0-49 is backwards, 50 is stop, 51-100 is forwards.
+	
+	@param percentage_turn determines whether the servos should turn and in which direction.
+	0-49 is turn left, 50 is don't turn, 51-100 is turn right.
+*/
 void control_drive(short percentage_speed, short percentage_turn);
