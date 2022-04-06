@@ -2,9 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-Drive\drive.c
+src\ASF\mega\boards\stk600\rcx_x\init.c
 
-main.c
+src\lcd.c
 
-PwmReader\pwmReader.c
+src\main.c
 

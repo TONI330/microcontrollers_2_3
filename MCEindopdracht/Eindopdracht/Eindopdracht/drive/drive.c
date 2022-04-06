@@ -37,3 +37,22 @@ ISR(TIMER1_COMPB_vect)
 {
 	PORTB ^= (1 << 6);
 }
+
+int a = 300;
+
+void control_drive(short percentage_speed, short percentage_turn)
+{
+	
+}
+
+void set_speed(short percentage, short motor)
+{	
+	if(motor == 0) 
+	{
+		OCR1A = 20000 - (1300 + DRIVE_STEP_SIZE * percentage);
+	}
+	else
+	{
+		OCR1B = 20000 - (1300 + DRIVE_STEP_SIZE * percentage);
+	}
+}

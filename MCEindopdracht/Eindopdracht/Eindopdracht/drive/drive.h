@@ -8,6 +8,8 @@
 
 #define DRIVE_FULL_STOP_MS 1500
 
+#define DRIVE_STEP_SIZE (DRIVE_CLOCKWISE_SLOWEST_MS - DRIVE_CLOCKWISE_FASTEST_MS) / 100.0
+
 /*
 	This method initializes the servos and the I/O pins they are
 	connected to. The servos are initialized to stop turning.
@@ -16,3 +18,7 @@
 	this method.
 */
 void init_servos(void);
+
+void control_drive(short percentage_speed, short percentage_turn);
+
+void set_speed(short percentage, short motor);
