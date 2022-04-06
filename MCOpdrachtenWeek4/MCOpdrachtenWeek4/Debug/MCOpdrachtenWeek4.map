@@ -1,5 +1,6 @@
 Archive member included to satisfy reference by file (symbol)
 
+<<<<<<< HEAD
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o (exit)
 
@@ -26,6 +27,34 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+=======
+f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                              F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o (exit)
+
+Discarded input sections
+
+ .data          0x00000000        0x0 F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+ .bss           0x00000000        0x0 F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+ .text          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 main.o
+ .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
 
 Memory Configuration
 
@@ -42,6 +71,7 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 Address of section .data set to 0x800100
+<<<<<<< HEAD
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
 LOAD main.o
 START GROUP
@@ -52,6 +82,18 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/b
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51\libatmega128.a
+=======
+LOAD F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+LOAD main.o
+START GROUP
+LOAD f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a
+END GROUP
+START GROUP
+LOAD f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a
+LOAD f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a
+LOAD f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a
+LOAD F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51\libatmega128.a
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
 END GROUP
                 0x00000000                __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
                 [0x00800100]                __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x800100
@@ -153,9 +195,15 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
+<<<<<<< HEAD
 .text           0x00000000       0xe6
  *(.vectors)
  .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+=======
+.text           0x00000000       0xa4
+ *(.vectors)
+ .vectors       0x00000000       0x8c F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
                 0x00000000                __vector_default
                 0x00000000                __vectors
  *(.vectors)
@@ -183,13 +231,21 @@ END GROUP
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
+<<<<<<< HEAD
  .init0         0x0000008c        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+=======
+ .init0         0x0000008c        0x0 F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
                 0x0000008c                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
+<<<<<<< HEAD
  .init2         0x0000008c        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+=======
+ .init2         0x0000008c        0xc F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
  *(.init2)
  *(.init3)
  *(.init3)
@@ -204,10 +260,17 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
+<<<<<<< HEAD
  .init9         0x00000098        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
  *(.init9)
  *(.text)
  .text          0x0000009c        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+=======
+ .init9         0x00000098        0x4 F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+ *(.init9)
+ *(.text)
+ .text          0x0000009c        0x2 F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
                 0x0000009c                __vector_22
                 0x0000009c                __vector_28
                 0x0000009c                __vector_1
@@ -245,6 +308,7 @@ END GROUP
                 0x0000009c                __vector_20
                 0x0000009e                . = ALIGN (0x2)
  *(.text.*)
+<<<<<<< HEAD
  .text.wait     0x0000009e       0x1e main.o
                 0x0000009e                wait
  .text.adcInit  0x000000bc        0xa main.o
@@ -256,6 +320,15 @@ END GROUP
  .fini9         0x000000e2        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
                 0x000000e2                _exit
                 0x000000e2                exit
+=======
+ .text.main     0x0000009e        0x2 main.o
+                0x0000009e                main
+                0x000000a0                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000000a0        0x0 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                0x000000a0                _exit
+                0x000000a0                exit
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -274,11 +347,19 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
+<<<<<<< HEAD
  .fini0         0x000000e2        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  *(.fini0)
                 0x000000e6                _etext = .
 
 .data           0x00800100        0x0 load address 0x000000e6
+=======
+ .fini0         0x000000a0        0x4 f:/programs/microchip/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ *(.fini0)
+                0x000000a4                _etext = .
+
+.data           0x00800100        0x0 load address 0x000000a4
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -296,8 +377,13 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
+<<<<<<< HEAD
                 0x000000e6                __data_load_start = LOADADDR (.data)
                 0x000000e6                __data_load_end = (__data_load_start + SIZEOF (.data))
+=======
+                0x000000a4                __data_load_start = LOADADDR (.data)
+                0x000000a4                __data_load_end = (__data_load_start + SIZEOF (.data))
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
 
 .noinit         0x00800100        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -351,7 +437,11 @@ END GROUP
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c
  .note.gnu.avr.deviceinfo
+<<<<<<< HEAD
                 0x00000000       0x3c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+=======
+                0x00000000       0x3c F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -368,14 +458,22 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
+<<<<<<< HEAD
 .debug_aranges  0x00000000       0x30
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x30 main.o
+=======
+.debug_aranges  0x00000000       0x20
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 main.o
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
 
 .debug_pubnames
  *(.debug_pubnames)
 
+<<<<<<< HEAD
 .debug_info     0x00000000      0x900
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
@@ -404,6 +502,35 @@ END GROUP
 .debug_loc      0x00000000       0x6a
  *(.debug_loc)
  .debug_loc     0x00000000       0x6a main.o
+=======
+.debug_info     0x00000000      0x7fd
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x780 F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+ .debug_info    0x00000780       0x7d main.o
+
+.debug_abbrev   0x00000000      0x761
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x718 F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+ .debug_abbrev  0x00000718       0x49 main.o
+
+.debug_line     0x00000000      0x1a3
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x16a F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+ .debug_line    0x0000016a       0x39 main.o
+
+.debug_frame    0x00000000       0x24
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x24 main.o
+
+.debug_str      0x00000000      0x3f7
+ *(.debug_str)
+ .debug_str     0x00000000      0x27d F:/Programs/Microchip/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
+ .debug_str     0x0000027d      0x17a main.o
+                                0x1ae (size before relaxing)
+
+.debug_loc
+ *(.debug_loc)
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -423,9 +550,15 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
+<<<<<<< HEAD
 .debug_ranges   0x00000000       0x20
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x20 main.o
+=======
+.debug_ranges   0x00000000       0x10
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x10 main.o
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
 
 .debug_macro
  *(.debug_macro)

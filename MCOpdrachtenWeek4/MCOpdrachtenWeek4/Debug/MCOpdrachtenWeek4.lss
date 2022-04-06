@@ -3,6 +3,7 @@ MCOpdrachtenWeek4.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
+<<<<<<< HEAD
   0 .data         00000000  00800100  00800100  0000013a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         000000e6  00000000  00000000  00000054  2**1
@@ -26,6 +27,29 @@ Idx Name          Size      VMA       LMA       File off  Algn
  10 .debug_loc    0000006a  00000000  00000000  00001aae  2**0
                   CONTENTS, READONLY, DEBUGGING
  11 .debug_ranges 00000020  00000000  00000000  00001b18  2**0
+=======
+  0 .data         00000000  00800100  00800100  000000f8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000000a4  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000000f8  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000128  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  00000164  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000007fd  00000000  00000000  00000184  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000761  00000000  00000000  00000981  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000001a3  00000000  00000000  000010e2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000024  00000000  00000000  00001288  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003f7  00000000  00000000  000012ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 00000010  00000000  00000000  000016a3  2**0
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -109,12 +133,18 @@ Disassembly of section .text:
   92:	d0 e1       	ldi	r29, 0x10	; 16
   94:	de bf       	out	0x3e, r29	; 62
   96:	cd bf       	out	0x3d, r28	; 61
+<<<<<<< HEAD
   98:	16 d0       	rcall	.+44     	; 0xc6 <main>
   9a:	23 c0       	rjmp	.+70     	; 0xe2 <_exit>
+=======
+  98:	02 d0       	rcall	.+4      	; 0x9e <main>
+  9a:	02 c0       	rjmp	.+4      	; 0xa0 <_exit>
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
 
 0000009c <__bad_interrupt>:
   9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
 
+<<<<<<< HEAD
 0000009e <wait>:
 #include <avr/io.h>
 #include <util/delay.h>
@@ -195,3 +225,19 @@ int main(void)
 
 000000e4 <__stop_program>:
   e4:	ff cf       	rjmp	.-2      	; 0xe4 <__stop_program>
+=======
+0000009e <main>:
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+  9e:	ff cf       	rjmp	.-2      	; 0x9e <main>
+
+000000a0 <_exit>:
+  a0:	f8 94       	cli
+
+000000a2 <__stop_program>:
+  a2:	ff cf       	rjmp	.-2      	; 0xa2 <__stop_program>
+>>>>>>> 861dd5ae0fcfaed8aabdd67b6c4f2ba074644b08
