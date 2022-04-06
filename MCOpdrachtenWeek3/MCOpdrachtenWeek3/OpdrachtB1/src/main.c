@@ -50,7 +50,7 @@ int main (void)
 	
 	set_cursor(0);
 	
-	while(1==1) {
+	while(1) {
 		PORTA = TCNT2;
 		char test[16];
 		sprintf(test, "Amount: %d", TCNT2);

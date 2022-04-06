@@ -647,13 +647,13 @@ END GROUP
  .debug_frame   0x00000000       0xc8 src/lcd.o
  .debug_frame   0x000000c8       0x34 src/main.o
 
-.debug_str      0x00000000    0x12757
+.debug_str      0x00000000    0x127df
  *(.debug_str)
  .debug_str     0x00000000      0x27d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega128/avr51/crtatmega128.o
  .debug_str     0x0000027d     0x742b src/lcd.o
                                0x74d4 (size before relaxing)
- .debug_str     0x000076a8     0xb0af src/main.o
-                              0x1262c (size before relaxing)
+ .debug_str     0x000076a8     0xb137 src/main.o
+                              0x12649 (size before relaxing)
 
 .debug_loc      0x00000000      0x39f
  *(.debug_loc)
