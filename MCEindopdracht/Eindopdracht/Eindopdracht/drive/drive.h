@@ -20,5 +20,3 @@
 void init_servos(void);
 
 void control_drive(short percentage_speed, short percentage_turn);
-
-void set_speed(short percentage, short motor);

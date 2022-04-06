@@ -8,6 +8,11 @@
 #include "Drive/drive.h"
 #include "PwmReader/pwmReader.h"
 
+#define STICK_RIGHT_UP_DOWN 2
+#define STICK_RIGHT_LEFT_RIGHT 0
+#define STICK_LEFT_UP_DOWN 3
+#define STICK_LEFT_LEFT_RIGHT 1
+
 void wait(int ms)
 {
 	for(int i = 0; i < ms; i++)
@@ -29,6 +34,6 @@ int main(void)
 
     while (1) 
     {
-		set_speed((*test_value - 180) / 180.0 * 100, 0);
+		//set_speed((*test_value - 180) / 180.0 * 100, 0);
     }
 }
