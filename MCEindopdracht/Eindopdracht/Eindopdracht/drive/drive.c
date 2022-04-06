@@ -2,12 +2,13 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <stdbool.h>
 
 #define PWM_WAVE_TIME 20000
 #define PERCENTAGE_DEAD_ZONE 5
 #define LEFT_MOTOR 0
 #define RIGHT_MOTOR 1
-#define REVERSED_MOTOR LEFT_MOTOR
+#define REVERSED_MOTOR RIGHT_MOTOR
 
 // Interrupt for pin 13.
 ISR(TIMER1_COMPA_vect)
@@ -26,44 +27,50 @@ int calculate_timer_compare_time(int duty_cycle_ms)
 	return PWM_WAVE_TIME - duty_cycle_ms;
 }
 
-void set_speed_motor(short percentage, short motor)
+bool is_same_value(int old_value, int new_value, int delta)
 {
-	// Reverse the percentage on the motor that is installed in reverse.
-	percentage = motor == REVERSED_MOTOR ? percentage * -1 : percentage;
-	
+	return new_value < old_value + delta && new_value > old_value - delta;
+}
+
+void set_speed_motor(short percentage, short motor)
+{	
 	if(motor == LEFT_MOTOR)
 	{
-		if(percentage > 0)
+		if(percentage == 50)
 		{
-			OCR1A = calculate_timer_compare_time(DRIVE_CLOCKWISE_FASTEST_MS + DRIVE_STEP_SIZE * percentage);	
+			OCR1B = calculate_timer_compare_time(DRIVE_FULL_STOP_MS);
+			return;
+		}
+		
+		if(percentage > 50)
+		{
+			OCR1B = calculate_timer_compare_time(DRIVE_COUNTERCLOCKWISE_SLOWEST_MS + DRIVE_STEP_SIZE * ((percentage - 50) / 50.0 * 100));
 		} 
 		else
 		{
-			OCR1A = calculate_timer_compare_time(DRIVE_COUNTERCLOCKWISE_SLOWEST_MS + DRIVE_STEP_SIZE * percentage);
+			OCR1B = calculate_timer_compare_time(DRIVE_CLOCKWISE_SLOWEST_MS - DRIVE_STEP_SIZE * ((50 - percentage) / 50.0 * 100));
 		}
+		
+		return;
 	}
 	
 	if(motor == RIGHT_MOTOR)
 	{
-		if(percentage > 0)
+		if(percentage == 50)
 		{
-			OCR1B = calculate_timer_compare_time(DRIVE_CLOCKWISE_FASTEST_MS + DRIVE_STEP_SIZE * percentage);
+			OCR1A = calculate_timer_compare_time(DRIVE_FULL_STOP_MS);
+			return;
+		}
+		
+		if(percentage > 50)
+		{
+			OCR1A = calculate_timer_compare_time(DRIVE_CLOCKWISE_SLOWEST_MS - DRIVE_STEP_SIZE * ((percentage - 50) / 50.0 * 100));
 		}
 		else
 		{
-			OCR1B = calculate_timer_compare_time(DRIVE_COUNTERCLOCKWISE_SLOWEST_MS + DRIVE_STEP_SIZE * percentage);
+			OCR1A = calculate_timer_compare_time(DRIVE_COUNTERCLOCKWISE_SLOWEST_MS + DRIVE_STEP_SIZE * ((50 - percentage) / 50.0 * 100));
 		}
 	}
-	
-	
-	//if(motor == 0)
-	//{
-	//OCR1A = 20000 - (1300 + DRIVE_STEP_SIZE * percentage);
-	//}
-	//else
-	//{
-	//OCR1B = 20000 - (1300 + DRIVE_STEP_SIZE * percentage);
-	//}
 }
 
 void set_speed(short percentage)
@@ -78,30 +85,7 @@ void turn(short percentage)
 }
 
 void control_drive(short percentage_speed, short percentage_turn)
-{
-	// Make sure the values are within their bounds. i.e. -100 <= percentage_speed <= 100
-	percentage_speed = percentage_speed > 100 ? 100 : percentage_speed;
-	percentage_speed = percentage_speed < -100 ? -100 : percentage_speed;
-	
-	percentage_turn = percentage_turn > 100 ? 100 : percentage_turn;
-	percentage_turn = percentage_turn < -100 ? -100 : percentage_turn;
-	
-	// If the speed is in the dead zone, set speed to 0.
-	if(percentage_speed < PERCENTAGE_DEAD_ZONE && percentage_speed > PERCENTAGE_DEAD_ZONE * -1)
-	{
-		set_speed(0);
-		turn(percentage_turn);
-		return;
-	}
-	
-	// If the turn is in the dead zone, set turn to 0.
-	if(percentage_turn < PERCENTAGE_DEAD_ZONE && percentage_turn > PERCENTAGE_DEAD_ZONE * -1)
-	{
-		set_speed(percentage_speed);
-		turn(0);
-		return;
-	}
-	
+{	
 	set_speed(percentage_speed);
 	turn(percentage_turn);
 }

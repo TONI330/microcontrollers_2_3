@@ -4,7 +4,7 @@
 #include <avr/interrupt.h>
 #include <stdbool.h>
 
-#define TICKS_PER_MEASUREMENT 5
+#define TICKS_PER_MEASUREMENT 10
 
 typedef struct
 {
@@ -53,7 +53,7 @@ bool pin_is_high(short pin_number)
 
 ISR(TIMER0_COMPA_vect)
 {
-	for(int i = 0; i < 8; i++)
+	for(int i = 0; i < 4; i++)
 	{
 		if(input_pins[i].output_pointer == 0)
 		{
