@@ -38,8 +38,6 @@ ISR(TIMER1_COMPB_vect)
 	PORTB ^= (1 << 6);
 }
 
-int a = 300;
-
 void control_drive(short percentage_speed, short percentage_turn)
 {
 	

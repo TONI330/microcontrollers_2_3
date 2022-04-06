@@ -6,9 +6,6 @@
 
 #define TICKS_PER_MEASUREMENT 5
 
-bool state = false;
-int dutyCycleTicks = 0;
-
 typedef struct
 {
 	int* output_pointer;
@@ -85,9 +82,4 @@ ISR(TIMER0_COMPA_vect)
 	}
 
 	TCNT0 = 0;
-}
-
-int getTicks()
-{
-	return dutyCycleTicks;
 }
