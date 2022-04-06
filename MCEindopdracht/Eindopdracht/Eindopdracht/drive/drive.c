@@ -79,15 +79,64 @@ void set_speed(short percentage)
 	set_speed_motor(percentage, RIGHT_MOTOR);
 }
 
-void turn(short percentage)
+void turn(short speed_percentage, short turn_percentage)
 {
-	
+	 // Turn forward left.
+	 if(turn_percentage < 50 && speed_percentage > 50)
+	 {
+		 set_speed_motor(90, RIGHT_MOTOR);
+		 set_speed_motor(70, LEFT_MOTOR);
+		 return;
+	 }
+	 
+	 // Turn forward right.
+	 if(turn_percentage > 50 && speed_percentage > 50)
+	 {
+		 set_speed_motor(70, RIGHT_MOTOR);
+		 set_speed_motor(90, LEFT_MOTOR);
+		 return;
+	 }
+	 
+	 // Turn backward left.
+	 if(turn_percentage < 50 && speed_percentage < 50)
+	 {
+		 set_speed_motor(10, RIGHT_MOTOR);
+		 set_speed_motor(30, LEFT_MOTOR);
+		 return;
+	 }
+	 
+	 // Turn backward right.
+	 if(turn_percentage > 50 && speed_percentage < 50)
+	 {
+		 set_speed_motor(30, RIGHT_MOTOR);
+		 set_speed_motor(10, LEFT_MOTOR);
+		 return;
+	 }
+	 
+	 // Tun stationary left.
+	 if(turn_percentage < 50 && speed_percentage == 50)
+	 {
+		 set_speed_motor(80, RIGHT_MOTOR);
+		 set_speed_motor(20, LEFT_MOTOR);
+	 }
+	 
+	 // Tun stationary right.
+	 if(turn_percentage > 50 && speed_percentage == 50)
+	 {
+		 set_speed_motor(20, RIGHT_MOTOR);
+		 set_speed_motor(80, LEFT_MOTOR);
+	 }
 }
 
 void control_drive(short percentage_speed, short percentage_turn)
 {	
-	set_speed(percentage_speed);
-	turn(percentage_turn);
+	if(percentage_turn == 50)
+	{
+		set_speed(percentage_speed);	
+		return;
+	}
+	
+	turn(percentage_speed, percentage_turn);
 }
 
 void init_servos()

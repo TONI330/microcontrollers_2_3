@@ -13,9 +13,9 @@
 #define STICK_LEFT_UP_DOWN 3
 #define STICK_LEFT_LEFT_RIGHT 1
 
-#define STICK_MINIMUM 450
-#define STICK_CENTER 670
-#define STICK_MAXIMUM 890
+#define STICK_MINIMUM 330
+#define STICK_CENTER 550
+#define STICK_MAXIMUM 770
 
 int calculate_stick_percentage(int pwm_value, int delta)
 {
@@ -29,16 +29,20 @@ int calculate_stick_percentage(int pwm_value, int delta)
 int main(void)
 {
 	sei(); // Enable interrupts.
-	DDRB = 0;
+	DDRB = 0; // Initialize port to input to avoid frying receiver pins.
 	
 	init_servos();
 	init_pwm();
 	
-	int* test_value = malloc(16);
-	pwm_reader_add_pin(STICK_LEFT_UP_DOWN, test_value);
+	int* throttle_value = malloc(sizeof(int));
+	int* steering_value = malloc(sizeof(int));
+	
+	pwm_reader_add_pin(STICK_LEFT_UP_DOWN, throttle_value);
+	pwm_reader_add_pin(STICK_RIGHT_LEFT_RIGHT, steering_value);
 
     while (1) 
     {
-		control_drive(100 - calculate_stick_percentage(*test_value, 10), 0);
+		control_drive(100 - calculate_stick_percentage(*throttle_value, 10), calculate_stick_percentage(*steering_value, 20));
+		//control_drive(100 - calculate_stick_percentage(*throttle_value, 10), 30);
     }
 }
